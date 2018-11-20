@@ -5,7 +5,6 @@ const COLOR_SET = {
     FG_RED: "\x1b[31m",
     FG_GREEN: "\x1b[32m",
     FG_YELLOW: "\x1b[33m"
-
 };
 const colorize = (num, color) => {
     return `${color}${num}${COLOR_SET.RESET}`;
@@ -30,8 +29,6 @@ const quoteFromYahoo = cb => {
         console.log("Error: " + err.message);
     });
 };
-
-
 
 const printTable = data => {
     const results = data.quoteResponse.result;
