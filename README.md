@@ -4,6 +4,8 @@
 
 This is a simple Node.js app using Yahoo Finance API as a data source. It monitor stock quotes every 5s(configurable) in your watch list.
 
+![Screenshot](https://github.com/phoenixzqy/stock-ticker/blob/master/screenshot/stock-monitor.png)
+
 ## Dependency
 
 Make sure to install [Node.js](https://nodejs.org/en/download/);
