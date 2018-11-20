@@ -20,7 +20,7 @@ In your `.config.json` file, you can add stock simple in `watch_list` array. And
 
 ## Stocks from Markets other than the US
 
-For example, if you need to find a stock from HongKong market, let's say `Tencent` Inc., you always can find it's simple from [Yahoo Finance](https://finance.yahoo.com/). The simple would be like this: `0700.HK`;
+For example, if you need to find a stock from HongKong market, let's say `Tencent` Inc., you always can find it's symbol from [Yahoo Finance](https://finance.yahoo.com/). The symbol would be like this: `0700.HK`;
 
 ## TODOs
 
