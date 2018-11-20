@@ -1,0 +1,19 @@
+{
+  "name": "stock-ticker",
+  "version": "1.0.0",
+  "description": "Command line stock price monitor tool",
+  "main": "ticker.js",
+  "scripts": {
+    "quote": "node ticker.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phoenixzqy/stock-ticker.git"
+  },
+  "author": "Felix",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phoenixzqy/stock-ticker/issues"
+  },
+  "homepage": "https://github.com/phoenixzqy/stock-ticker#readme"
+}

@@ -1,0 +1,24 @@
+{
+    "yahoo_api": {
+        "endpoint": "https://query1.finance.yahoo.com/v7/finance/quote?lang=en-US&region=US&corsDomain=finance.yahoo.com",
+        "fields": [
+            "symbol",
+            "marketState",
+            "regularMarketPrice",
+            "regularMarketChange",
+            "regularMarketChangePercent",
+            "preMarketPrice",
+            "preMarketChange",
+            "preMarketChangePercent",
+            "postMarketPrice",
+            "postMarketChange",
+            "postMarketChangePercent"
+        ]
+    },
+    "watch_list": [
+        "^GSPC",
+        "^DJI",
+        "^IXIC"
+    ],
+    "refresh_frequency" : 5000
+}
