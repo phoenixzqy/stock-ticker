@@ -79,7 +79,7 @@ const printTable = data => {
         }
     });
     // should refresh time
-    console.log(`\nRefresh at: ${new Date()}`);
+    console.log(`\nRefreshed at: ${new Date()}`);
 };
 
 // start the monitor
