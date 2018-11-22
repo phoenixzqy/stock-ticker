@@ -54,7 +54,7 @@ const printTable = data => {
     const CHANGE_PERCENT_INDEX = 5;
     const STATE_INDEX = 1;
     const COLORIZED_NUM_INDEXES = [4, 5];
-    const ALIGN_RIGHT_INDEXES = [2, 3 , 4, 5];
+    const ALIGN_RIGHT_INDEXES = [2, 3, 4, 5];
     table.forEach((item, index) => {
         const TABLE_CELL_WIDTH = 10;
         console.log(`${item.map((x, i) => {
@@ -68,10 +68,10 @@ const printTable = data => {
             }
             if (ALIGN_RIGHT_INDEXES.indexOf(i) >= 0) {
                 // align right
-                return `${spaces}${text}`;
+                return spaces + text;
             } else {
                 // align left
-                return `${text}${spaces}`;
+                return text + spaces;
             }
         }).join('')}`);
         if (index === 0) {
@@ -80,10 +80,22 @@ const printTable = data => {
     });
     // should refresh time
     console.log(`\nRefreshed at: ${new Date()}`);
+    console.log(`Sync Setting: Only Sync between ${config.sync_period.start_at} and ${config.sync_period.end_at}`);
+};
+
+const shouldSync = () => {
+    let start_at = config.sync_period.start_at.split(':');
+    let end_at = config.sync_period.end_at.split(':');
+    let start_time = new Date().setHours(~~start_at[0], ~~start_at[1]);
+    let end_time = new Date().setHours(~~end_at[0], ~~end_at[1]);
+    let now = new Date();
+    return now > start_time && now < end_time;
 };
 
 // start the monitor
 setInterval(function callMe() {
-    quoteFromYahoo(printTable);
+    if (shouldSync()) {
+        quoteFromYahoo(printTable);
+    }
     return callMe;
 }(), config.refresh_frequency);
