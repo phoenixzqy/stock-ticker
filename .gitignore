@@ -61,4 +61,4 @@ typings/
 .next
 
 # local config backup
-.config.backup.json
+config/watch_list.json

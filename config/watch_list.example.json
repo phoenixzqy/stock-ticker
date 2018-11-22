@@ -1,0 +1,21 @@
+{
+    "Market": [
+        "^GSPC",
+        "^DJI",
+        "^IXIC"
+    ],
+    "Highlight": [
+        "AAPL",
+        "GOOG"
+    ],
+    "Tech": [
+        "NFLX",
+        "AMZN",
+        "MSFT",
+        "INTC",
+        "ATVI",
+        "EA",
+        "FB",
+        "0700.HK"
+    ]
+}

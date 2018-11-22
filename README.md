@@ -16,7 +16,15 @@ Just simply clone this Repo and run `node ticker.js`  or `npm run quote` under R
 
 ## CONFIG
 
-In your `.config.json` file, you can add stock simple in `watch_list` array. And also you can set `refresh_frequency` in millisecond. In general, you **don't** need to touch `yahoo_api`, unless you know what you are doing.
+In your `config/config.json` file, you can set `refresh_frequency` in millisecond. You can also set your sync time period based on your local time and market open schedule.
+
+In general, you **don't** need to touch `yahoo_api`, unless you know what you are doing.
+
+## WATCH LIST
+
+You create your own `config/watch_list.json` file to create your stock watching list. You group/category them by creating an array of stocks with a key as category name.
+
+You can start your watch list by renaming and editing the `watch_list.example.json` file.
 
 ## Stocks from Markets other than the US
 
