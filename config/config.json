@@ -15,21 +15,9 @@
             "postMarketChangePercent"
         ]
     },
-    "watch_list": [
-        "^GSPC",
-        "^DJI",
-        "^IXIC",
-        "FTNT",
-        "NFLX",
-        "AAPL",
-        "GOOG",
-        "AMZN",
-        "MSFT",
-        "0700.HK"
-    ],
     "refresh_frequency": 5000,
     "sync_period": {
         "start_at": "6:00",
-        "end_at": "13:00"
+        "end_at": "14:00"
     }
 }

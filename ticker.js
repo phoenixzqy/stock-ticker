@@ -1,17 +1,21 @@
-const config = require("./.config.json");
+const config = require("./config/config.json");
+const watch_list = require("./config/watch_list.json");
 const https = require("https");
 const COLOR_SET = {
-    RESET: "\x1b[0m",
+    RESET: "\x1b[39m",
     FG_RED: "\x1b[31m",
-    FG_GREEN: "\x1b[32m",
-    FG_YELLOW: "\x1b[33m"
+    FG_GREEN: "\x1b[92m",
+    FG_YELLOW: "\x1b[33m",
+    FG_BLUE: "\x1b[34m",
+
 };
 const colorize = (num, color) => {
     return `${color}${num}${COLOR_SET.RESET}`;
 };
+
 const quoteFromYahoo = cb => {
     const endpoint = config.yahoo_api.endpoint;
-    const symbols = config.watch_list.join(',');
+    const symbols = Object.values(watch_list).reduce((acc, curr) => acc.concat(curr));
     // const fields = config.yahoo_api.fields.join(',');
     // var url = `${endpoint}&fields=${fields}&symbols=${symbols}`;
     var url = `${endpoint}&symbols=${symbols}`;
@@ -55,16 +59,34 @@ const printTable = data => {
     const STATE_INDEX = 1;
     const COLORIZED_NUM_INDEXES = [4, 5];
     const ALIGN_RIGHT_INDEXES = [2, 3, 4, 5];
+    const SYMBOL_INDEX = 0;
+    const HEADER_ROW_INDEX = 0;
+    let category = "";
+    const TABLE_CELL_WIDTH = 10;
+    const TABLE_WIDTH = TABLE_CELL_WIDTH * table[HEADER_ROW_INDEX].length;
     table.forEach((item, index) => {
-        const TABLE_CELL_WIDTH = 10;
+        // print category name
+        if (index > HEADER_ROW_INDEX) {
+            for (let cat in watch_list) {
+                if (watch_list[cat].indexOf(item[SYMBOL_INDEX]) >= 0) {
+                    if (category !== cat) {
+                        category = cat;
+                        const repeat_times = (TABLE_WIDTH - category.length) / 2;
+                        console.log('-'.repeat(Math.floor(repeat_times)) + colorize(category, COLOR_SET.FG_BLUE) + '-'.repeat(Math.ceil(repeat_times)));
+                    }
+                    break;
+                }
+            }
+        }
+        // print 1 row of data
         console.log(`${item.map((x, i) => {
-            var str = i === CHANGE_PERCENT_INDEX && index > 0 ? `(${x}%)` : x.toString();
+            var str = i === CHANGE_PERCENT_INDEX && index > HEADER_ROW_INDEX ? `(${x}%)` : x.toString();
             var spaces = ' '.repeat(Math.max(TABLE_CELL_WIDTH - str.length, 0));
             var text = "";
             if (i === STATE_INDEX && index > 0) {
                 text = x.toUpperCase() === 'REGULAR' ? colorize(str, COLOR_SET.FG_GREEN) : colorize(str, COLOR_SET.FG_YELLOW);
             } else {
-                text = COLORIZED_NUM_INDEXES.indexOf(i) >= 0 && index > 0 ? colorize(str, x >= 0 ? COLOR_SET.FG_GREEN : COLOR_SET.FG_RED) : str;
+                text = COLORIZED_NUM_INDEXES.indexOf(i) >= 0 && index > HEADER_ROW_INDEX ? colorize(str, x >= 0 ? COLOR_SET.FG_GREEN : COLOR_SET.FG_RED) : str;
             }
             if (ALIGN_RIGHT_INDEXES.indexOf(i) >= 0) {
                 // align right
@@ -74,10 +96,10 @@ const printTable = data => {
                 return text + spaces;
             }
         }).join('')}`);
-        if (index === 0) {
-            console.log('-'.repeat(TABLE_CELL_WIDTH * table[0].length));
-        }
     });
+    // print table bottom border
+    console.log('-'.repeat(TABLE_WIDTH));
+
     // should refresh time
     console.log(`\nRefreshed at: ${new Date()}`);
     console.log(`Sync Setting: Only Sync between ${config.sync_period.start_at} and ${config.sync_period.end_at}`);
