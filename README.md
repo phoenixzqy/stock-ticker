@@ -22,11 +22,11 @@ In general, you **don't** need to touch `yahoo_api`, unless you know what you ar
 
 ## WATCH LIST
 
-You create your own `config/watch_list.json` file to create your stock watching list. You group/category them by creating an array of stocks with a key as category name.
+You create your own `config/watch_list.json` file to get your stock watch list. You cann group them by creating an array of stocks with a key as category name.
 
-You can start your watch list by renaming and editing the `watch_list.example.json` file.
+Note: Please start your watch list by renaming and editing the `watch_list.example.json` file.
 
-## Stocks from Markets other than the US
+## Stocks from Markets other than the U.S.
 
 For example, if you need to find a stock from HongKong market, let's say `Tencent` Inc., you always can find it's symbol from [Yahoo Finance](https://finance.yahoo.com/). The symbol would be like this: `0700.HK`;
 
