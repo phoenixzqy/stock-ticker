@@ -2,9 +2,9 @@
 
 > Command line stock price monitor tool
 
-This is a simple Node.js app using Yahoo Finance API as a data source. It monitor stock quotes every 5s(configurable) in your watch list.
+This is a simple Node.js app using Yahoo Finance API as a data source. It monitors stock quotes from your watch list every 5s (configurable) by default.
 
-![Screenshot](https://github.com/phoenixzqy/stock-ticker/blob/master/screenshot/stock-monitor.png)
+![Screenshot](https://github.com/phoenixzqy/stock-ticker/blob/master/screenshot/stock-monitor.png?raw=true)
 
 ## Dependency
 
