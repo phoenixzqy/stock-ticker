@@ -1,5 +1,12 @@
 const config = require("./config/config.json");
-const watch_list = require("./config/watch_list.json");
+const watch_list = (function() {
+    try {
+        return require("./config/watch_list.json");
+    } catch (e) {
+        console.log("ERROR: Can NOT find `config/watch_list.json` file");
+        process.exit();
+    }
+})();
 const https = require("https");
 const COLOR_SET = {
     RESET: "\x1b[39m",
